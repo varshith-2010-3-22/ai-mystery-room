@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: ai-mystery-room-server
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start -w server
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: GEMINI_MODEL
+        value: gemini-2.5-flash
+      - key: MONGODB_URI
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: CLIENT_URL
+        sync: false
